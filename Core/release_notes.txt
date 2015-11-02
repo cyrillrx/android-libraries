@@ -1,5 +1,8 @@
 LRX Core Release Notes
 
+2015-11-02 - v0.2.4
+- Extracted logger as a stand alone library
+
 2015-10-20 - v0.2.3
 - Enhanced Logger implementation
 - Renamed AbstractLogger to LogWrapper and implemented wrapper logic
