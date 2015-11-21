@@ -1,5 +1,11 @@
 LRX Core Release Notes
 
+2015-11-21 - v0.2.5
+- Added trim before validating email in FieldUtils
+- Added getMillisLeft to CountDownTimer
+- Updated support library to 23.1.1
+- Updated gson library to 2.4
+
 2015-11-02 - v0.2.4
 - Extracted logger as a stand alone library
 

@@ -77,6 +77,10 @@ public abstract class CountDownTimer {
         return this;
     }
 
+    public long getMillisLeft() {
+        return mStopTimeInFuture - SystemClock.elapsedRealtime();
+    }
+
     /**
      * Callback fired on regular interval.
      *

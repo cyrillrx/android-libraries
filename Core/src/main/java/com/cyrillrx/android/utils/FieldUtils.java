@@ -96,6 +96,7 @@ public class FieldUtils {
         private final String mErrorMessage;
 
         public static ValidationEntry email(EditText etEmail) {
+            etEmail.setText(etEmail.getText().toString().trim());
             return new ValidationEntry(etEmail, Patterns.EMAIL_ADDRESS, sErrorInvalidEmail);
         }
 
