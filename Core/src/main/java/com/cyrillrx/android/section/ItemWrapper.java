@@ -9,7 +9,7 @@ package com.cyrillrx.android.section;
 public class ItemWrapper<Data> {
 
     private String mHeader;
-    private Data mData;
+    private Data   mData;
 
     /** Constructor that wraps data. */
     public ItemWrapper(String header, Data data) {

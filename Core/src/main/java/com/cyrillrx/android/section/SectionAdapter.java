@@ -20,11 +20,11 @@ import java.util.List;
 public abstract class SectionAdapter<Data, VH extends SectionAdapter.SectionViewHolder<Data>>
         extends RecyclerView.Adapter<VH> {
 
-    protected static final int ITEM_TYPE_NORMAL = 0;
-    protected static final int ITEM_TYPE_HEADER = 1;
+    protected static final int ITEM_TYPE_NORMAL  = 0;
+    protected static final int ITEM_TYPE_HEADER  = 1;
     protected static final int ITEM_TYPE_DIVIDER = 2;
 
-    protected final List<ItemWrapper<Data>> mWrappers;
+    protected final List<ItemWrapper<Data>>   mWrappers;
     protected final OnDataClickListener<Data> mOnDataClickListener;
 
     public static class SectionViewHolder<Data> extends RecyclerView.ViewHolder {

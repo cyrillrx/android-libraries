@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class NamedList<Data> {
 
-    private final String title;
+    private final String     title;
     private final List<Data> items;
 
     public NamedList(String title) {

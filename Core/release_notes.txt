@@ -1,5 +1,8 @@
 LRX Core Release Notes
 
+2015-11-23 - v0.2.6
+- Moved Tracker to a stand-alone module
+
 2015-11-21 - v0.2.5
 - Added trim before validating email in FieldUtils
 - Added getMillisLeft to CountDownTimer

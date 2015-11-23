@@ -20,16 +20,16 @@ import com.cyrillrx.android.R;
  */
 public class TextProgressBar extends ProgressBar {
 
-    private static final String DEFAULT_TEXT = "";
-    private static final int DEFAULT_COLOR = Color.BLACK;
-    private static final float DEFAULT_TEXT_SIZE = 16f;
+    private static final String DEFAULT_TEXT      = "";
+    private static final int    DEFAULT_COLOR     = Color.BLACK;
+    private static final float  DEFAULT_TEXT_SIZE = 16f;
 
     private Paint mTextPaint;
-    private Rect mTextBounds;
+    private Rect  mTextBounds;
 
     private String mText;
-    private int mTextColor;
-    private float mTextSize;
+    private int    mTextColor;
+    private float  mTextSize;
 
     public TextProgressBar(Context context) {
         super(context);

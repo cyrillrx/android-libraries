@@ -43,7 +43,7 @@ import java.lang.annotation.RetentionPolicy;
 public class FloatingActionButton extends ImageButton {
 
     private static final int TRANSLATE_DURATION_MILLIS = 200;
-    private static final int DEFAULT_COLOR_RIPPLE = Color.WHITE;
+    private static final int DEFAULT_COLOR_RIPPLE      = Color.WHITE;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({TYPE_NORMAL, TYPE_MINI})
@@ -51,18 +51,18 @@ public class FloatingActionButton extends ImageButton {
     }
 
     public static final int TYPE_NORMAL = 0;
-    public static final int TYPE_MINI = 1;
+    public static final int TYPE_MINI   = 1;
 
     private boolean mVisible;
 
     private int mDefaultColorNormal;
     private int mDefaultColorPressed;
 
-    private int mColorNormal;
-    private int mColorPressed;
-    private int mColorRipple;
+    private int     mColorNormal;
+    private int     mColorPressed;
+    private int     mColorRipple;
     private boolean mShadow;
-    private int mType;
+    private int     mType;
 
     private int mShadowSize;
 

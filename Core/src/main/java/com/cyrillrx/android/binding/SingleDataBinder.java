@@ -10,7 +10,7 @@ package com.cyrillrx.android.binding;
 public class SingleDataBinder<Data> extends DataBinder<Data> {
 
     protected boolean mDataChanged;
-    protected Data mData;
+    protected Data    mData;
 
     /**
      * Sets or updates the parent with the given data.

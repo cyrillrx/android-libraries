@@ -92,8 +92,8 @@ public class FieldUtils {
 
     public static class ValidationEntry {
         private final EditText mEditText;
-        private final Pattern mPattern;
-        private final String mErrorMessage;
+        private final Pattern  mPattern;
+        private final String   mErrorMessage;
 
         public static ValidationEntry email(EditText etEmail) {
             etEmail.setText(etEmail.getText().toString().trim());
