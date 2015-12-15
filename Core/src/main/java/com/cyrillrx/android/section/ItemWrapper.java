@@ -1,36 +1,50 @@
 package com.cyrillrx.android.section;
 
 /**
- * Wraps both headers and items in order to display them in a recycler view.
+ * An object that wraps item to display in a recycler view.
  *
  * @author Cyril Leroux
- *         Created on 25/07/2015.
+ *         Created on 24/04/15
  */
 public class ItemWrapper<Data> {
 
-    private String mHeader;
-    private Data   mData;
+    protected int    mItemType;
+    protected String mHeader;
+    protected Data   mData;
 
-    /** Constructor that wraps data. */
-    public ItemWrapper(String header, Data data) {
+    /** Constructor that wraps data with a header. */
+    public ItemWrapper(int viewType, String header, Data data) {
+        mItemType = viewType;
         mHeader = header;
         mData = data;
     }
 
-    /** Constructor that wraps data. */
-    public ItemWrapper(Data data) {
-        mHeader = null;
-        mData = data;
-    }
+    /** Constructor that wraps data with a header. */
+    public ItemWrapper(String header, Data data) { this(ItemType.DEFAULT, header, data); }
+
+    /** Constructor that only defines the item type. */
+    public ItemWrapper(int viewType) { this(viewType, null, null); }
+
+    /** Constructor that wraps data without header. */
+    public ItemWrapper(Data data) { this(ItemType.DEFAULT, null, data); }
 
     /** Constructor that wraps a header. */
-    public ItemWrapper(String header) { mHeader = header; }
+    public ItemWrapper(String header) {this(ItemType.DEFAULT, header, null); }
+
+    public int getItemType() { return mItemType; }
 
     public String getHeader() { return mHeader; }
 
+    public void setHeader(String header) { mHeader = header; }
+
     public Data getData() { return mData; }
 
-    public void setData(Data data) { mData = data; }
+    public void setData(Data data) {
+        mItemType = ItemType.DEFAULT;
+        mData = data;
+    }
 
-    public boolean isHeader() { return mData == null; }
+    public boolean hasData() { return mData != null; }
+
+    public boolean isHeader() { return mItemType == ItemType.HEADER; }
 }
