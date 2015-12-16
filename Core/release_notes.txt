@@ -1,5 +1,8 @@
 LRX Core Release Notes
 
+2015-12-16 - v0.2.8
+- Fixed ItemWrapper
+
 2015-12-15 - v0.2.7
 - Enhanced ItemWrapper
 

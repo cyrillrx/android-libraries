@@ -29,7 +29,7 @@ public class ItemWrapper<Data> {
     public ItemWrapper(Data data) { this(ItemType.DEFAULT, null, data); }
 
     /** Constructor that wraps a header. */
-    public ItemWrapper(String header) {this(ItemType.DEFAULT, header, null); }
+    public ItemWrapper(String header) {this(ItemType.HEADER, header, null); }
 
     public int getItemType() { return mItemType; }
 
