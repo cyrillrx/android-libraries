@@ -37,7 +37,7 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
 
     // External libraries
-    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.code.gson:gson:2.5'
 }
 
 
