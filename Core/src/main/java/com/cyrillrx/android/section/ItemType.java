@@ -16,8 +16,9 @@ public interface ItemType {
     int SUB_ITEM = 2;
 
     int DIVIDER = 10;
+    int LOADER  = 11;
     /** Used for grids/lists with and action at the end. */
-    int ACTION  = 11;
+    int ACTION  = 12;
 
     int STUB = 20;
 }

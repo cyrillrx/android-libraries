@@ -20,10 +20,6 @@ import java.util.List;
 public abstract class SectionAdapter<Data, VH extends SectionAdapter.SectionViewHolder<Data>>
         extends RecyclerView.Adapter<VH> {
 
-    protected static final int ITEM_TYPE_NORMAL  = 0;
-    protected static final int ITEM_TYPE_HEADER  = 1;
-    protected static final int ITEM_TYPE_DIVIDER = 2;
-
     protected final List<ItemWrapper<Data>>   mWrappers;
     protected final OnDataClickListener<Data> mOnDataClickListener;
 
@@ -98,11 +94,7 @@ public abstract class SectionAdapter<Data, VH extends SectionAdapter.SectionView
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return mWrappers.get(position).isHeader() ? ITEM_TYPE_HEADER : ITEM_TYPE_NORMAL;
-    }
+    public int getItemViewType(int position) { return mWrappers.get(position).getItemType(); }
 
-    public ItemWrapper<Data> getWrapper(int position) {
-        return mWrappers.get(position);
-    }
+    public ItemWrapper<Data> getWrapper(int position) { return mWrappers.get(position); }
 }

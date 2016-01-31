@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Cyril Leroux
  *         Created on 04/12/14
  */
-public class DataBinder<Data> {
+public class DataBinder<Data> implements RequestLifecycle {
 
     protected final Set<DataLinkedView<Data>> mLinkedViews;
 
@@ -57,6 +57,7 @@ public class DataBinder<Data> {
     }
 
     /** Start loading data (from a database, a webservice, etc.). */
+    @Override
     public void onStartLoading() {
         for (DataLinkedView<Data> view : mLinkedViews) {
             view.onStartLoading();
@@ -64,6 +65,7 @@ public class DataBinder<Data> {
     }
 
     /** Stop loading data. */
+    @Override
     public void onStopLoading() {
         for (DataLinkedView<Data> view : mLinkedViews) {
             view.onStopLoading();
@@ -71,7 +73,8 @@ public class DataBinder<Data> {
     }
 
     /** Failure while loading data. */
-    public void onLoadingFailure() {
+    @Override
+    public void onRequestFailure() {
         for (DataLinkedView<Data> view : mLinkedViews) {
             view.onRequestFailure();
         }

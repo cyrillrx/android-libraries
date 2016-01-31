@@ -6,7 +6,7 @@ package com.cyrillrx.android.binding;
  * @author Cyril Leroux
  *         Created on 04/12/14
  */
-public interface DataLinkedView<Data> {
+public interface DataLinkedView<Data> extends RequestLifecycle {
 
     /**
      * Binds the data to the view.
@@ -14,10 +14,4 @@ public interface DataLinkedView<Data> {
      * @param data The data to bind.
      */
     void bind(Data data);
-
-    void onStartLoading();
-
-    void onStopLoading();
-
-    void onRequestFailure();
 }
