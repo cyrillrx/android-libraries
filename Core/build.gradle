@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as int
@@ -40,7 +40,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.5'
 }
 
-
 publish {
     userOrg = 'cyrillrx'
     groupId = 'com.cyrillrx.android'
@@ -50,17 +49,13 @@ publish {
     website = 'https://github.com/cyrillrx/android_libraries'
 }
 
-//plugins {
-//    id "com.jfrog.bintray" version "1.2"
-//}
-//
 //publishing {
 //    publications {
 //        MyPublication(MavenPublication) {
 //            from components.java
 //            groupId 'com.cyrillrx.android'
 //            artifactId 'core'
-//            version '0.1.7'
+//            version '0.2.9'
 //        }
 //    }
 //}
@@ -71,21 +66,22 @@ publish {
 //    Properties props = new Properties()
 //    props.load(new FileInputStream(propsFile))
 //
-//    user props['BINTRAY_USER']
-//    key props['BINTRAY_KEY']
+//    user = props['BINTRAY_USER']
+//    key = props['BINTRAY_KEY']
 //    publications = ['MyPublication']
 //
 //    pkg {
 //        repo = 'maven'
 //        name = 'core'
 //        licenses = ['Apache-2.0']
-//        vcsUrl = 'https://github.com/cyrillrx/android_libraries'
+//        vcsUrl = 'https://github.com/cyrillrx/android_libraries.git'
 //        userOrg = 'cyrillrx'
 //
 //        version {
-//            name = '0.1.7'
+//            name = '0.2.9'
 //            desc = 'A basic library for Android containing UI components, and miscellaneous utils.'
 //            released = new Date()
+//            vcsTag = 'v0.2.9'
 //        }
 //    }
 //}
