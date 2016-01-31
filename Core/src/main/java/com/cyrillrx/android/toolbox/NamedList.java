@@ -1,5 +1,6 @@
 package com.cyrillrx.android.toolbox;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -13,8 +14,9 @@ import java.util.List;
  */
 public class NamedList<Data> {
 
-    private final String     title;
-    private final List<Data> items;
+    protected String     id;
+    protected String     title;
+    protected List<Data> items;
 
     public NamedList(String title) {
         this.title = title;
@@ -26,9 +28,16 @@ public class NamedList<Data> {
         this.items = items;
     }
 
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
+
     public String getTitle() { return title; }
 
-    public List<Data> getItems() { return items; }
+    public void setTitle(String title) { this.title = title; }
+
+    @NonNull
+    public List<Data> getItems() { return items == null ? new ArrayList<Data>() : items; }
 
     public Data getItem(int index) { return items.get(index); }
 
@@ -41,4 +50,6 @@ public class NamedList<Data> {
     public void addAll(@Nullable Data[] data) {
         if (data != null) { items.addAll(Arrays.asList(data)); }
     }
+
+    public boolean isEmpty() { return items == null || items.isEmpty(); }
 }
