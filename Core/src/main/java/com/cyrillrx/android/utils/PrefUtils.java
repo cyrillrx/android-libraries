@@ -38,6 +38,30 @@ public class PrefUtils {
     }
 
     /**
+     * Retrieves a string value from the shared preferences.
+     * Clears the stored field if an error occurs.
+     * Unlike {@link #getString(Context, String)} does not throw exception.
+     *
+     * @param context The context.
+     * @param key     The name of the preference to retrieve.
+     * @return The preference value if it exists, or an empty String.
+     */
+    public static String getSafeString(Context context, String key) {
+
+        try {
+            return getString(context, key);
+
+        } catch (Exception e) {
+            // If a problem occurred while parsing, better clear the stored field.
+            PrefUtils.edit(context)
+                    .remove(key)
+                    .apply();
+
+            return "";
+        }
+    }
+
+    /**
      * Retrieves a boolean value from the shared preferences.
      *
      * @param context The context.
@@ -50,6 +74,30 @@ public class PrefUtils {
     }
 
     /**
+     * Retrieves a boolean value from the shared preferences.
+     * Clears the stored field if an error occurs.
+     * Unlike {@link #getBoolean(Context, String, boolean)} does not throw exception.
+     *
+     * @param context The context.
+     * @param key     The name of the preference to retrieve.
+     * @return The preference value if it exists, or defaultValue.
+     */
+    public static boolean getSafeBoolean(Context context, String key, boolean defaultValue) {
+
+        try {
+            return getBoolean(context, key, defaultValue);
+
+        } catch (Exception e) {
+            // If a problem occurred while parsing, better clear the stored field.
+            PrefUtils.edit(context)
+                    .remove(key)
+                    .apply();
+
+            return defaultValue;
+        }
+    }
+
+    /**
      * Retrieves an integer value from the shared preferences.
      *
      * @param context The context.
@@ -58,7 +106,31 @@ public class PrefUtils {
      * @throws ClassCastException if there is a preference with this name that is not an int.
      */
     public static int getInt(Context context, String key) {
-        return getPreferences(context).getInt(key, Integer.MIN_VALUE);
+        return getPreferences(context).getInt(key, 0);
+    }
+
+    /**
+     * Retrieves an integer value from the shared preferences.
+     * Clears the stored field if an error occurs.
+     * Unlike {@link #getInt(Context, String)} does not throw exception.
+     *
+     * @param context The context.
+     * @param key     The name of the preference to retrieve.
+     * @return The preference value if it exists, or 0.
+     */
+    public static int getSafeInt(Context context, String key) {
+
+        try {
+            return getInt(context, key);
+
+        } catch (Exception e) {
+            // If a problem occurred while parsing, better clear the stored field.
+            PrefUtils.edit(context)
+                    .remove(key)
+                    .apply();
+
+            return Integer.MIN_VALUE;
+        }
     }
 
     /**
@@ -66,11 +138,35 @@ public class PrefUtils {
      *
      * @param context The context.
      * @param key     The name of the preference to retrieve.
-     * @return The preference value if it exists, or defaultValue.
-     * @throws ClassCastException if there is a preference with this name that is not a boolean.
+     * @return The preference value if it exists, or Long.MIN_VALUE.
+     * @throws ClassCastException if there is a preference with this name that is not a long.
      */
     public static long getLong(Context context, String key) {
-        return getPreferences(context).getLong(key, 0l);
+        return getPreferences(context).getLong(key, Long.MIN_VALUE);
+    }
+
+    /**
+     * Retrieves a long value from the shared preferences.
+     * Clears the stored field if an error occurs.
+     * Unlike {@link #getLong(Context, String)} does not throw exception.
+     *
+     * @param context The context.
+     * @param key     The name of the preference to retrieve.
+     * @return The preference value if it exists, or Long.MIN_VALUE.
+     */
+    public static long getSafeLong(Context context, String key) {
+
+        try {
+            return getLong(context, key);
+
+        } catch (Exception e) {
+            // If a problem occurred while parsing, better clear the stored field.
+            PrefUtils.edit(context)
+                    .remove(key)
+                    .apply();
+
+            return Long.MIN_VALUE;
+        }
     }
 
     /**

@@ -1,5 +1,8 @@
 LRX Core Release Notes
 
+2016-02-04 - v0.3.0
+- Added safe accessor to PrefUtils
+
 2016-01-31 - v0.2.9
 - Created RequestLifecycle interface
 - Created ItemGroup data model
