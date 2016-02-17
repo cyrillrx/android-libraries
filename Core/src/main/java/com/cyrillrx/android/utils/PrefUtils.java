@@ -106,7 +106,7 @@ public class PrefUtils {
      * @throws ClassCastException if there is a preference with this name that is not an int.
      */
     public static int getInt(Context context, String key) {
-        return getPreferences(context).getInt(key, 0);
+        return getPreferences(context).getInt(key, Integer.MIN_VALUE);
     }
 
     /**
@@ -116,7 +116,7 @@ public class PrefUtils {
      *
      * @param context The context.
      * @param key     The name of the preference to retrieve.
-     * @return The preference value if it exists, or 0.
+     * @return The preference value if it exists, or Integer.MIN_VALUE.
      */
     public static int getSafeInt(Context context, String key) {
 
