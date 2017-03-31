@@ -18,14 +18,14 @@ import java.util.regex.Pattern;
  */
 public class FieldUtils {
 
-    private static String sErrorFieldRequired;
-    private static String sErrorInvalidPassword;
-    private static String sErrorInvalidEmail;
+    private static String errorFieldRequired;
+    private static String errorInvalidPassword;
+    private static String errorInvalidEmail;
 
     public static void init(Resources resources) {
-        sErrorFieldRequired = resources.getString(R.string.error_field_required);
-        sErrorInvalidPassword = resources.getString(R.string.error_invalid_password);
-        sErrorInvalidEmail = resources.getString(R.string.error_invalid_email);
+        errorFieldRequired = resources.getString(R.string.error_field_required);
+        errorInvalidPassword = resources.getString(R.string.error_invalid_password);
+        errorInvalidEmail = resources.getString(R.string.error_invalid_email);
     }
 
     public static void validateFields(ValidationCallback callback, ValidationEntry... entries) {
@@ -66,7 +66,7 @@ public class FieldUtils {
 
         // Check emptiness
         if (TextUtils.isEmpty(value)) {
-            editText.setError(sErrorFieldRequired);
+            editText.setError(errorFieldRequired);
             return "";
         }
 
@@ -87,36 +87,36 @@ public class FieldUtils {
     public static void validateCredentials(EditText etEmail, EditText etPassword, ValidationCallback callback) {
         validateFields(callback,
                 ValidationEntry.email(etEmail),
-                new ValidationEntry(etPassword, Pattern.compile(".{4,}"), sErrorInvalidPassword));
+                new ValidationEntry(etPassword, Pattern.compile(".{4,}"), errorInvalidPassword));
     }
 
     public static class ValidationEntry {
-        private final EditText mEditText;
-        private final Pattern  mPattern;
-        private final String   mErrorMessage;
+        private final EditText editText;
+        private final Pattern pattern;
+        private final String errorMessage;
 
         public static ValidationEntry email(EditText etEmail) {
             etEmail.setText(etEmail.getText().toString().trim());
-            return new ValidationEntry(etEmail, Patterns.EMAIL_ADDRESS, sErrorInvalidEmail);
+            return new ValidationEntry(etEmail, Patterns.EMAIL_ADDRESS, errorInvalidEmail);
         }
 
         public ValidationEntry(EditText editText, Pattern pattern, String errorMessage) {
-            mEditText = editText;
-            mPattern = pattern;
-            mErrorMessage = errorMessage;
+            this.editText = editText;
+            this.pattern = pattern;
+            this.errorMessage = errorMessage;
         }
 
         public ValidationEntry(EditText editText) {
-            mEditText = editText;
-            mPattern = null;
-            mErrorMessage = null;
+            this.editText = editText;
+            pattern = null;
+            errorMessage = null;
         }
 
-        public EditText getEditText() { return mEditText; }
+        public EditText getEditText() { return editText; }
 
-        public Pattern getPattern() { return mPattern; }
+        public Pattern getPattern() { return pattern; }
 
-        public String getErrorMessage() { return mErrorMessage; }
+        public String getErrorMessage() { return errorMessage; }
     }
 
     public interface ValidationCallback {

@@ -20,16 +20,16 @@ import com.cyrillrx.android.R;
  */
 public class TextProgressBar extends ProgressBar {
 
-    private static final String DEFAULT_TEXT      = "";
-    private static final int    DEFAULT_COLOR     = Color.BLACK;
-    private static final float  DEFAULT_TEXT_SIZE = 16f;
+    private static final String DEFAULT_TEXT = "";
+    private static final int DEFAULT_COLOR = Color.BLACK;
+    private static final float DEFAULT_TEXT_SIZE = 16f;
 
-    private Paint mTextPaint;
-    private Rect  mTextBounds;
+    private Paint textPaint;
+    private Rect textBounds;
 
-    private String mText;
-    private int    mTextColor;
-    private float  mTextSize;
+    private String text;
+    private int textColor;
+    private float textSize;
 
     public TextProgressBar(Context context) {
         super(context);
@@ -60,68 +60,68 @@ public class TextProgressBar extends ProgressBar {
                 0, 0);
 
         try {
-            mText = a.getString(R.styleable.TextProgressBar_text);
-            mTextColor = a.getColor(R.styleable.TextProgressBar_textColor, DEFAULT_COLOR);
-            mTextSize = a.getDimension(R.styleable.TextProgressBar_textSize, DEFAULT_TEXT_SIZE);
+            text = a.getString(R.styleable.TextProgressBar_text);
+            textColor = a.getColor(R.styleable.TextProgressBar_textColor, DEFAULT_COLOR);
+            textSize = a.getDimension(R.styleable.TextProgressBar_textSize, DEFAULT_TEXT_SIZE);
         } finally {
             a.recycle();
         }
 
-        mTextPaint = new Paint();
-        mTextPaint.setAntiAlias(true);
-        mTextPaint.setColor(mTextColor);
-        mTextPaint.setTextSize(mTextSize);
+        textPaint = new Paint();
+        textPaint.setAntiAlias(true);
+        textPaint.setColor(textColor);
+        textPaint.setTextSize(textSize);
 
-        mTextBounds = new Rect();
+        textBounds = new Rect();
     }
 
     private void init() {
-        mText = DEFAULT_TEXT;
-        mTextColor = DEFAULT_COLOR;
-        mTextSize = DEFAULT_TEXT_SIZE;
+        text = DEFAULT_TEXT;
+        textColor = DEFAULT_COLOR;
+        textSize = DEFAULT_TEXT_SIZE;
 
-        mTextPaint = new Paint();
-        mTextPaint.setAntiAlias(true);
-        mTextPaint.setColor(mTextColor);
-        mTextPaint.setTextSize(mTextSize);
+        textPaint = new Paint();
+        textPaint.setAntiAlias(true);
+        textPaint.setColor(textColor);
+        textPaint.setTextSize(textSize);
 
-        mTextBounds = new Rect();
+        textBounds = new Rect();
     }
 
     @Override
     protected synchronized void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
 
-        if (mText == null || mText.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             return;
         }
 
         // Calculate text bounds
-        mTextPaint.getTextBounds(mText, 0, mText.length(), mTextBounds);
+        textPaint.getTextBounds(text, 0, text.length(), textBounds);
 
         // Calculate center position
-        int x = getWidth() / 2 - mTextBounds.centerX();
-        int y = getHeight() / 2 - mTextBounds.centerY();
+        int x = getWidth() / 2 - textBounds.centerX();
+        int y = getHeight() / 2 - textBounds.centerY();
 
         // Drawing the text
-        canvas.drawText(mText, x, y, mTextPaint);
+        canvas.drawText(text, x, y, textPaint);
     }
 
-    public String getText() { return mText; }
+    public String getText() { return text; }
 
-    public synchronized void setText(String text) { mText = text; }
+    public synchronized void setText(String text) { this.text = text; }
 
-    public int getTextColor() { return mTextColor; }
+    public int getTextColor() { return textColor; }
 
     public synchronized void setTextColor(int textColor) {
-        mTextColor = textColor;
-        mTextPaint.setColor(mTextColor);
+        this.textColor = textColor;
+        textPaint.setColor(this.textColor);
     }
 
-    public float getTextSize() { return mTextSize; }
+    public float getTextSize() { return textSize; }
 
     public synchronized void setTextSize(float textSize) {
-        mTextSize = textSize;
-        mTextPaint.setTextSize(mTextSize);
+        this.textSize = textSize;
+        textPaint.setTextSize(this.textSize);
     }
 }

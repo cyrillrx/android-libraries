@@ -10,7 +10,7 @@ import com.cyrillrx.android.section.ItemType;
  */
 public abstract class SimpleLoaderAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
-    protected boolean mIsLoading;
+    protected boolean isLoading;
 
     public abstract void addLoader();
 

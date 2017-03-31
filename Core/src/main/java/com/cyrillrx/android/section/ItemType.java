@@ -11,14 +11,14 @@ package com.cyrillrx.android.section;
  */
 public interface ItemType {
 
-    int DEFAULT  = 0;
-    int HEADER   = 1;
+    int DEFAULT = 0;
+    int HEADER = 1;
     int SUB_ITEM = 2;
 
     int DIVIDER = 10;
-    int LOADER  = 11;
+    int LOADER = 11;
     /** Used for grids/lists with and action at the end. */
-    int ACTION  = 12;
+    int ACTION = 12;
 
     int STUB = 20;
 }

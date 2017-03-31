@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class NamedList<Data> {
 
-    protected String     id;
-    protected String     title;
+    protected String id;
+    protected String title;
     protected List<Data> items;
 
     public NamedList(String title) {

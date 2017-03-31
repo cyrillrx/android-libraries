@@ -12,12 +12,12 @@ import java.util.Set;
  */
 public class DataBinder<Data> implements RequestLifecycle {
 
-    protected final Set<DataLinkedView<Data>> mLinkedViews;
+    protected final Set<DataLinkedView<Data>> linkedViews;
 
     /**
      * Initializes an empty data binder.
      */
-    public DataBinder() { mLinkedViews = new HashSet<>(); }
+    public DataBinder() { linkedViews = new HashSet<>(); }
 
     /**
      * Initializes the binder with the view to update.
@@ -45,7 +45,7 @@ public class DataBinder<Data> implements RequestLifecycle {
      */
     public boolean bindData(Data data, ViewBoundCallback callback) {
 
-        for (DataLinkedView<Data> view : mLinkedViews) {
+        for (DataLinkedView<Data> view : linkedViews) {
             view.bind(data);
         }
 
@@ -59,7 +59,7 @@ public class DataBinder<Data> implements RequestLifecycle {
     /** Start loading data (from a database, a webservice, etc.). */
     @Override
     public void onStartLoading() {
-        for (DataLinkedView<Data> view : mLinkedViews) {
+        for (DataLinkedView<Data> view : linkedViews) {
             view.onStartLoading();
         }
     }
@@ -67,7 +67,7 @@ public class DataBinder<Data> implements RequestLifecycle {
     /** Stop loading data. */
     @Override
     public void onStopLoading() {
-        for (DataLinkedView<Data> view : mLinkedViews) {
+        for (DataLinkedView<Data> view : linkedViews) {
             view.onStopLoading();
         }
     }
@@ -75,7 +75,7 @@ public class DataBinder<Data> implements RequestLifecycle {
     /** Failure while loading data. */
     @Override
     public void onRequestFailure() {
-        for (DataLinkedView<Data> view : mLinkedViews) {
+        for (DataLinkedView<Data> view : linkedViews) {
             view.onRequestFailure();
         }
     }
@@ -87,11 +87,11 @@ public class DataBinder<Data> implements RequestLifecycle {
      * @return True if the linked view  set is modified, false otherwise.
      */
     public boolean addLinkedView(DataLinkedView<Data> linkedView) {
-        return mLinkedViews.add(linkedView);
+        return linkedViews.add(linkedView);
     }
 
     public boolean removeLinkedView(DataLinkedView<Data> linkedView) {
-        return mLinkedViews.remove(linkedView);
+        return linkedViews.remove(linkedView);
     }
 
     /**
@@ -100,7 +100,7 @@ public class DataBinder<Data> implements RequestLifecycle {
      * @return True if the linked view set is modified, false otherwise.
      */
     public boolean addLinkedViews(DataLinkedView<Data>... views) {
-        return Collections.addAll(mLinkedViews, views);
+        return Collections.addAll(linkedViews, views);
     }
 
 }

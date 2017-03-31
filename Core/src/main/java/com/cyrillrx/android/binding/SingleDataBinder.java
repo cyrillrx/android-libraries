@@ -9,26 +9,26 @@ package com.cyrillrx.android.binding;
  */
 public class SingleDataBinder<Data> extends DataBinder<Data> {
 
-    protected boolean mDataChanged;
-    protected Data    mData;
+    protected boolean dataChanged;
+    protected Data data;
 
     /**
      * Sets or updates the parent with the given data.
      * Then refresh the view if necessary.
      * The listener passed in parameter is called back when the view is loaded/refreshed
      *
-     * @param data The new data.
+     * @param newData The new data.
      * @return True if data has changed.
      */
     @Override
-    public boolean bindData(Data data, ViewBoundCallback callback) {
+    public boolean bindData(Data newData, ViewBoundCallback callback) {
 
-        mDataChanged = data != null && !data.equals(mData);
-        mData = data;
+        dataChanged = newData != null && !newData.equals(data);
+        data = newData;
 
-        refreshViews(data, callback);
+        refreshViews(newData, callback);
 
-        return mDataChanged;
+        return dataChanged;
     }
 
     /**
@@ -37,21 +37,21 @@ public class SingleDataBinder<Data> extends DataBinder<Data> {
      * @param data The new data.
      */
     private void refreshViews(Data data, ViewBoundCallback callback) {
-        if (!mDataChanged) {
+        if (!dataChanged) {
             return;
         }
 
-        for (DataLinkedView<Data> view : mLinkedViews) {
+        for (DataLinkedView<Data> view : linkedViews) {
             view.bind(data);
         }
 
         // Reset the data changed state
-        mDataChanged = false;
+        dataChanged = false;
 
         if (callback != null) {
             callback.onBound();
         }
     }
 
-    public Data getData() { return mData; }
+    public Data getData() { return data; }
 }

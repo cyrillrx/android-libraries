@@ -10,10 +10,10 @@ public class ItemWrapper<Data> {
 
     public static final int NO_GROUP = -1;
 
-    protected int    itemType;
+    protected int itemType;
     protected String header;
-    protected Data   data;
-    protected int    groupId;
+    protected Data data;
+    protected int groupId;
 
     /** Constructor that wraps data with a header. */
     public ItemWrapper(int viewType, String header, Data data, int groupId) {

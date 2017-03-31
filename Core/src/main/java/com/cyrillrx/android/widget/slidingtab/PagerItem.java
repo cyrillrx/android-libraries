@@ -10,23 +10,15 @@ import android.support.v4.app.Fragment;
  */
 public class PagerItem<PageFragment extends Fragment> {
 
-    private final CharSequence mTitle;
-    private final int          mIndicatorColor;
-    private final int          mDividerColor;
-    private final PageFragment mFragment;
+    private final CharSequence title;
+    private final PageFragment fragment;
 
-    public PagerItem(CharSequence title, int indicatorColor, int dividerColor, PageFragment fragment) {
-        mTitle = title;
-        mIndicatorColor = indicatorColor;
-        mDividerColor = dividerColor;
-        mFragment = fragment;
+    public PagerItem(CharSequence title, PageFragment fragment) {
+        this.title = title;
+        this.fragment = fragment;
     }
 
-    public CharSequence getTitle() { return mTitle; }
+    public CharSequence getTitle() { return title; }
 
-    public int getIndicatorColor() { return mIndicatorColor; }
-
-    public int getDividerColor() { return mDividerColor; }
-
-    public PageFragment getFragment() { return mFragment; }
+    public PageFragment getFragment() { return fragment; }
 }

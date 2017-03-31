@@ -20,8 +20,8 @@ import java.util.List;
 public abstract class SectionAdapter<Data, VH extends SectionAdapter.SectionViewHolder<Data>>
         extends RecyclerView.Adapter<VH> {
 
-    protected final List<ItemWrapper<Data>>   mWrappers;
-    protected final OnDataClickListener<Data> mOnDataClickListener;
+    protected final List<ItemWrapper<Data>> wrappers;
+    protected final OnDataClickListener<Data> onDataClickListener;
 
     public static class SectionViewHolder<Data> extends RecyclerView.ViewHolder {
 
@@ -57,44 +57,44 @@ public abstract class SectionAdapter<Data, VH extends SectionAdapter.SectionView
     }
 
     public SectionAdapter(OnDataClickListener<Data> clickListener) {
-        mWrappers = new ArrayList<>();
-        mOnDataClickListener = clickListener;
+        wrappers = new ArrayList<>();
+        onDataClickListener = clickListener;
     }
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        holder.bind(mWrappers.get(position), mOnDataClickListener);
+        holder.bind(wrappers.get(position), onDataClickListener);
     }
 
     @Override
-    public int getItemCount() { return mWrappers.size(); }
+    public int getItemCount() { return wrappers.size(); }
 
     /** Populates the adapter using a collection of named lists. */
     public void populate(Collection<NamedList<Data>> namedLists) {
 
-        int oldLength = mWrappers.size();
+        int oldLength = wrappers.size();
 
         String header;
         for (NamedList<Data> namedList : namedLists) {
             header = namedList.getTitle();
-            mWrappers.add(new ItemWrapper<Data>(header));
+            wrappers.add(new ItemWrapper<Data>(header));
             final List<Data> items = namedList.getItems();
             for (Data item : items) {
-                mWrappers.add(new ItemWrapper<>(header, item));
+                wrappers.add(new ItemWrapper<>(header, item));
             }
         }
 
-        int newLength = mWrappers.size();
+        int newLength = wrappers.size();
         notifyItemRangeInserted(oldLength, newLength - oldLength);
     }
 
     public void clear() {
-        mWrappers.clear();
+        wrappers.clear();
         notifyDataSetChanged();
     }
 
     @Override
-    public int getItemViewType(int position) { return mWrappers.get(position).getItemType(); }
+    public int getItemViewType(int position) { return wrappers.get(position).getItemType(); }
 
-    public ItemWrapper<Data> getWrapper(int position) { return mWrappers.get(position); }
+    public ItemWrapper<Data> getWrapper(int position) { return wrappers.get(position); }
 }
