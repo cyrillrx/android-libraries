@@ -30,16 +30,18 @@ public class Serializer {
     }
 
     /** Serializes the given object with the default {@link Gson} implementation. */
-    public String serialize(Object object) { return DEFAULT.toJson(object); }
+    public static String serialize(Object object) { return DEFAULT.toJson(object); }
 
     public static <T> T deserialize(String json, Class<T> clazz) {
         return DEFAULT.fromJson(json, clazz);
     }
 
     /** Serializes the given object without escaping characters such as < > etc. */
-    public String serializeNoEscaping(Object object) { return NO_HTML_ESCAPING.toJson(object); }
+    public static String serializeNoEscaping(Object object) {
+        return NO_HTML_ESCAPING.toJson(object);
+    }
 
     /** Serializes and pretty prints the given object. */
-    public String prettyPrint(Object object) { return PRETTY_PRINT.toJson(object); }
+    public static String prettyPrint(Object object) { return PRETTY_PRINT.toJson(object); }
 
 }

@@ -1,6 +1,6 @@
 LRX Core Release Notes
 
-2017-03-31 - v0.3.2
+2017-03-31 - v0.3.3
 - Added Serializer
 - Code refactoring
 
