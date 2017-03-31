@@ -42,7 +42,15 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
 }
 
+
+File confFile = rootProject.file('../bintray/cyrillrx.properties')
+Properties publishConf = new Properties()
+publishConf.load(new FileInputStream(confFile))
+
 publish {
+    bintrayUser = publishConf['user']
+    bintrayKey = publishConf['key']
+
     userOrg = 'cyrillrx'
     groupId = 'com.cyrillrx.android'
     artifactId = 'core'
