@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
-def moduleVersionName = '0.3.3'
+def moduleVersionName = '0.3.4'
 
 android {
     compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as int
