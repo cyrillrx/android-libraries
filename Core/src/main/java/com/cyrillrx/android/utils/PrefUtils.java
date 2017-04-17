@@ -39,6 +39,18 @@ public class PrefUtils {
 
     /**
      * Retrieves a string value from the shared preferences.
+     *
+     * @param context The context.
+     * @param key     The name of the preference to retrieve.
+     * @return The preference value if it exists, or defaultValue.
+     * @throws ClassCastException if there is a preference with this name that is not a String.
+     */
+    public static String getString(Context context, String key, String defaultValue) {
+        return getPreferences(context).getString(key, defaultValue);
+    }
+
+    /**
+     * Retrieves a string value from the shared preferences.
      * Clears the stored field if an error occurs.
      * Unlike {@link #getString(Context, String)} does not throw exception.
      *

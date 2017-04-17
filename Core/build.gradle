@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
-def moduleVersionName = '0.3.4'
+def moduleVersionName = '0.4.0'
 
 android {
     compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as int
@@ -30,6 +31,7 @@ android {
 }
 
 dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Google Support libraries
     compile "com.android.support:support-v4:${supportLibVersion}"
@@ -40,6 +42,10 @@ dependencies {
 
     // External libraries
     compile 'com.google.code.gson:gson:2.7'
+    
+    testCompile 'junit:junit:4.12'
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
 
@@ -57,4 +63,7 @@ publish {
     version = moduleVersionName
     description = 'A basic library for Android containing UI components, and miscellaneous utils.'
     website = 'https://github.com/cyrillrx/android_libraries'
+}
+repositories {
+    mavenCentral()
 }
