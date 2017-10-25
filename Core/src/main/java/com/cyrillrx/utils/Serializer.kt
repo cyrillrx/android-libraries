@@ -9,39 +9,26 @@ import com.google.gson.GsonBuilder
  * @author Cyril Leroux
  * *         Created 31/03/2017.
  */
-object Serializer {
 
-    private val DEFAULT: Gson = Gson()
-    private val PRETTY_PRINT: Gson = GsonBuilder()
-            .disableHtmlEscaping()
-            .setPrettyPrinting()
-            .serializeNulls()
-            .create()
-    private val NO_HTML_ESCAPING: Gson = GsonBuilder()
-            .disableHtmlEscaping()
-            .create()
+private val DEFAULT: Gson = Gson()
+private val PRETTY_PRINT: Gson = GsonBuilder()
+        .disableHtmlEscaping()
+        .setPrettyPrinting()
+        .serializeNulls()
+        .create()
+private val NO_HTML_ESCAPING: Gson = GsonBuilder()
+        .disableHtmlEscaping()
+        .create()
 
-    /** Serializes the given object with the default [Gson] implementation.  */
-    fun serialize(any: Any): String {
-        return DEFAULT.toJson(any)
-    }
+/** Serializes the receiver object with the default [Gson] implementation.  */
+fun Any.serialize() = DEFAULT.toJson(this)
 
-    fun <T> deserialize(json: String, clazz: Class<T>): T {
-        return DEFAULT.fromJson(json, clazz)
-    }
+fun <T> String.deserialize(clazz: Class<T>): T = DEFAULT.fromJson(this, clazz)
 
-    /** Serializes the given object without escaping characters such as < > etc.  */
-    fun serializeNoEscaping(`object`: Any): String {
-        return NO_HTML_ESCAPING.toJson(`object`)
-    }
+/** Serializes the receiver object without escaping characters such as < > etc.  */
+fun Any.serializeNoEscaping() = NO_HTML_ESCAPING.toJson(this)
 
-    fun <T> deserializeNoEscaping(json: String, clazz: Class<T>): T {
-        return NO_HTML_ESCAPING.fromJson(json, clazz)
-    }
+fun <T> String.deserializeNoEscaping(clazz: Class<T>): T = NO_HTML_ESCAPING.fromJson(this, clazz)
 
-    /** Serializes and pretty prints the given object.  */
-    fun prettyPrint(any: Any): String {
-        return PRETTY_PRINT.toJson(any)
-    }
-
-}
+/** Serializes and pretty prints the given object.  */
+fun Any.prettyPrint() = PRETTY_PRINT.toJson(this)
