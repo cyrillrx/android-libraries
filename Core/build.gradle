@@ -64,6 +64,3 @@ publish {
     description = 'A basic library for Android containing UI components, and miscellaneous utils.'
     website = 'https://github.com/cyrillrx/android_libraries'
 }
-repositories {
-    mavenCentral()
-}
