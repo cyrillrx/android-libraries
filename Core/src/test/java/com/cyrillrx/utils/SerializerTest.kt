@@ -3,7 +3,6 @@ package com.cyrillrx.utils
 import org.junit.Assert
 import org.junit.Test
 
-
 /**
  * @author Cyril Leroux
  * *         Created 04/04/2017.
@@ -17,7 +16,7 @@ class SerializerTest {
 
         val data = DataObject("toto", "<tag />")
 
-        val actual = Serializer.serialize(data)
+        val actual = data.serialize()
         val expected = """{"key1":"toto","key2":"\u003ctag /\u003e"}"""
 
         Assert.assertEquals(expected, actual)
@@ -27,15 +26,13 @@ class SerializerTest {
     fun deserialize() {
 
         val serialized = """{"key1":"toto","key2":"\u003ctag /\u003e"}"""
-        val data: DataObject = Serializer.deserialize(serialized, DataObject::class.java)
+        val data: DataObject = serialized.deserialize(DataObject::class.java)
 
         Assert.assertEquals("toto", data.key1)
         Assert.assertEquals("<tag />", data.key2)
 
         val serialized2 = """{"key1":"toto","key2":"<tag />"}"""
-        val data2: DataObject = Serializer.deserialize(
-                serialized2,
-                DataObject::class.java)
+        val data2: DataObject = serialized2.deserialize(DataObject::class.java)
 
         Assert.assertEquals("toto", data2.key1)
         Assert.assertEquals("<tag />", data2.key2)
@@ -46,7 +43,7 @@ class SerializerTest {
 
         val data = DataObject("toto", "<tag />")
 
-        val actual = Serializer.serializeNoEscaping(data)
+        val actual = data.serializeNoEscaping()
         val expected = """{"key1":"toto","key2":"<tag />"}"""
 
         Assert.assertEquals(expected, actual)
@@ -57,7 +54,7 @@ class SerializerTest {
 
         val serialized = """{"key1":"toto","key2":"\u003ctag /\u003e"}"""
 
-        val data: DataObject = Serializer.deserializeNoEscaping(serialized, DataObject::class.java)
+        val data: DataObject = serialized.deserializeNoEscaping(DataObject::class.java)
 
         Assert.assertEquals("toto", data.key1)
         Assert.assertEquals("<tag />", data.key2)
@@ -68,7 +65,7 @@ class SerializerTest {
 
         val data = DataObject("toto", "<tag />")
 
-        val actual = Serializer.prettyPrint(data)
+        val actual = data.prettyPrint()
         val expected =
                 """{
   "key1": "toto",
