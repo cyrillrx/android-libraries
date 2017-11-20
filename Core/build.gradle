@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
-def moduleVersionName = '0.4.0'
+def moduleVersion = '0.4.0'
 
 android {
     compileSdkVersion project.compileSdkVersion
@@ -12,7 +12,7 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
-        versionName moduleVersionName
+        versionName moduleVersion
     }
 
     buildTypes {
@@ -28,6 +28,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -60,10 +65,7 @@ publish {
     userOrg = 'cyrillrx'
     groupId = 'com.cyrillrx.android'
     artifactId = 'core'
-    version = moduleVersionName
+    version = moduleVersion
     description = 'A basic library for Android containing UI components, and miscellaneous utils.'
     website = 'https://github.com/cyrillrx/android_libraries'
-}
-repositories {
-    mavenCentral()
 }
