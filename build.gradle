@@ -27,7 +27,7 @@ allprojects {
         targetSdkVersion = 26
         buildToolsVersion = '26.0.2'
 
-        supportLibVersion = '26.0.2'
+        supportLibVersion = '27.0.1'
     }
 
     if (JavaVersion.current().isJava8Compatible()) {
