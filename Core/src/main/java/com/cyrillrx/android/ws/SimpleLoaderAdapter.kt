@@ -6,7 +6,7 @@ import com.cyrillrx.android.section.ItemType
 
 /**
  * @author Cyril Leroux
- * *         Created on 17/03/15
+ *         Created on 17/03/2015
  */
 abstract class SimpleLoaderAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
 

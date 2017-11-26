@@ -5,9 +5,9 @@ import com.google.gson.GsonBuilder
 
 /**
  * Serialization helper that uses [Gson] implementations to serialize and deserialize objects.
-
+ *
  * @author Cyril Leroux
- * *         Created 31/03/2017.
+ *         Created on 31/03/2017
  */
 
 private val DEFAULT: Gson = Gson()
