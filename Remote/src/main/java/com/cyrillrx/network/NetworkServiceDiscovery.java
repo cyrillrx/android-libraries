@@ -21,31 +21,33 @@ public class NetworkServiceDiscovery {
     private static final String TAG = NetworkServiceDiscovery.class.getSimpleName();
     private static final String SERVICE_TYPE = "_http._tcp.";
 
-    private Context mContext;
+    private Context context;
 
-    private NsdManager.RegistrationListener mRegistrationListener;
-    private NsdManager.DiscoveryListener mDiscoveryListener;
-    private NsdManager.ResolveListener mResolveListener;
+    private NsdManager.RegistrationListener registrationListener;
+    private NsdManager.DiscoveryListener discoveryListener;
+    private NsdManager.ResolveListener resolveListener;
 
-    private ServerSocket mServerSocket;
-    private NsdManager mNsdManager;
-    private NsdServiceInfo mNsdServiceInfo;
-    private List<NsdServiceInfo> mDiscoveredServices;
+    private ServerSocket serverSocket;
+    private NsdManager nsdManager;
+    private NsdServiceInfo nsdServiceInfo;
+    private List<NsdServiceInfo> discoveredServices;
 
-    private String mServiceName;
-    private int mLocalPort;
+    private String serviceName;
+    private int localPort;
 
     public void initRegistrationListener() {
 
-        mRegistrationListener = new NsdManager.RegistrationListener() {
+        registrationListener = new NsdManager.RegistrationListener() {
             @Override
             public void onRegistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
-                // Registration failed!  Put debugging code here to determine why.
+                // Registration failed!
+                // Put debugging code here to determine why.
             }
 
             @Override
             public void onUnregistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
-                // Unregistration failed.  Put debugging code here to determine why.
+                // Unregistration failed.
+                // Put debugging code here to determine why.
             }
 
             @Override
@@ -53,32 +55,32 @@ public class NetworkServiceDiscovery {
                 // Save the service name.  Android may have changed it in order to
                 // resolve a conflict, so update the name you initially requested
                 // with the name Android actually used.
-                mServiceName = mNsdServiceInfo.getServiceName();
+                serviceName = nsdServiceInfo.getServiceName();
             }
 
             @Override
             public void onServiceUnregistered(NsdServiceInfo serviceInfo) {
-                // Service has been unregistered.  This only happens when you call
-                // NsdManager.unregisterService() and pass in this listener.
+                // Service has been unregistered.
+                // This only happens when you call NsdManager.unregisterService() and pass in this listener.
             }
         };
     }
 
     public void initDiscoveryListener() {
 
-        mDiscoveredServices = new ArrayList<>();
+        discoveredServices = new ArrayList<>();
 
-        mDiscoveryListener = new NsdManager.DiscoveryListener() {
+        discoveryListener = new NsdManager.DiscoveryListener() {
             @Override
             public void onStartDiscoveryFailed(String serviceType, int errorCode) {
                 Log.e(TAG, "Discovery failed: Error code:" + errorCode);
-                mNsdManager.stopServiceDiscovery(this);
+                nsdManager.stopServiceDiscovery(this);
             }
 
             @Override
             public void onStopDiscoveryFailed(String serviceType, int errorCode) {
                 Log.e(TAG, "Discovery failed: Error code:" + errorCode);
-                mNsdManager.stopServiceDiscovery(this);
+                nsdManager.stopServiceDiscovery(this);
             }
 
             @Override
@@ -99,12 +101,12 @@ public class NetworkServiceDiscovery {
                     // Service type is the string containing the protocol and
                     // transport layer for this service.
                     Log.d(TAG, "Unknown Service Type: " + serviceInfo.getServiceType());
-                } else if (serviceInfo.getServiceName().equals(mServiceName)) {
+                } else if (serviceInfo.getServiceName().equals(serviceName)) {
                     // The name of the service tells the user what they'd be
                     // connecting to. It could be "Bob's Chat App".
-                    Log.d(TAG, "Same machine: " + mServiceName);
+                    Log.d(TAG, "Same machine: " + serviceName);
                 } else if (serviceInfo.getServiceName().contains("NsdChat")) {
-                    mNsdManager.resolveService(serviceInfo, mResolveListener);
+                    nsdManager.resolveService(serviceInfo, resolveListener);
                 }
             }
 
@@ -118,7 +120,7 @@ public class NetworkServiceDiscovery {
     }
 
     public void initResolveListener() {
-        mResolveListener = new NsdManager.ResolveListener() {
+        resolveListener = new NsdManager.ResolveListener() {
 
             @Override
             public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {
@@ -130,13 +132,13 @@ public class NetworkServiceDiscovery {
             public void onServiceResolved(NsdServiceInfo serviceInfo) {
                 Log.e(TAG, "Resolve Succeeded. " + serviceInfo);
 
-                if (serviceInfo.getServiceName().equals(mServiceName)) {
+                if (serviceInfo.getServiceName().equals(serviceName)) {
                     Log.d(TAG, "Same IP.");
                     return;
                 }
-                mNsdServiceInfo = serviceInfo;
-                int port = mNsdServiceInfo.getPort();
-                InetAddress host = mNsdServiceInfo.getHost();
+                nsdServiceInfo = serviceInfo;
+                int port = nsdServiceInfo.getPort();
+                InetAddress host = nsdServiceInfo.getHost();
             }
         };
     }
@@ -145,43 +147,43 @@ public class NetworkServiceDiscovery {
 
         // Initialize a server socket on the next available port.
         try {
-            mServerSocket = new ServerSocket();
+            serverSocket = new ServerSocket();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         // Store the chosen port.
-        mLocalPort = mServerSocket.getLocalPort();
+        localPort = serverSocket.getLocalPort();
     }
 
     public void registerService(String serviceName, int port) {
 
-        mNsdServiceInfo = new NsdServiceInfo();
-        mNsdServiceInfo.setServiceName(serviceName);
-        mNsdServiceInfo.setServiceType(SERVICE_TYPE);
-        mNsdServiceInfo.setPort(port);
+        nsdServiceInfo = new NsdServiceInfo();
+        nsdServiceInfo.setServiceName(serviceName);
+        nsdServiceInfo.setServiceType(SERVICE_TYPE);
+        nsdServiceInfo.setPort(port);
 
-        mNsdManager = (NsdManager) mContext.getSystemService(Context.NSD_SERVICE);
+        nsdManager = (NsdManager) context.getSystemService(Context.NSD_SERVICE);
 
         // Register service on the network
-        mNsdManager.registerService(
-                mNsdServiceInfo,
+        nsdManager.registerService(
+                nsdServiceInfo,
                 NsdManager.PROTOCOL_DNS_SD,
-                mRegistrationListener);
+                registrationListener);
 
     }
 
     /** Discover devices */
     public void discoverServices() {
-        mNsdManager.discoverServices(
+        nsdManager.discoverServices(
                 SERVICE_TYPE,
                 NsdManager.PROTOCOL_DNS_SD,
-                mDiscoveryListener);
+                discoveryListener);
     }
 
     public void tearDown() {
-        mNsdManager.unregisterService(mRegistrationListener);
-        mNsdManager.stopServiceDiscovery(mDiscoveryListener);
+        nsdManager.unregisterService(registrationListener);
+        nsdManager.stopServiceDiscovery(discoveryListener);
     }
 
     // Activity Lifecycle
@@ -191,14 +193,14 @@ public class NetworkServiceDiscovery {
     }
 
     protected void onResume() {
-        registerService("Cyril's Nexus", mServerSocket.getLocalPort());
+        registerService("Cyril's Nexus", serverSocket.getLocalPort());
         discoverServices();
     }
 
     protected void onDestroy() {
         tearDown();
         try {
-            mServerSocket.close();
+            serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
