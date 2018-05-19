@@ -10,25 +10,29 @@ import com.google.gson.GsonBuilder
  *         Created on 31/03/2017
  */
 
-private val DEFAULT: Gson = Gson()
-private val PRETTY_PRINT: Gson = GsonBuilder()
+val defaultSerializer: Gson = Gson()
+
+val prettyPrintSerializer: Gson = GsonBuilder()
         .disableHtmlEscaping()
         .setPrettyPrinting()
         .serializeNulls()
         .create()
-private val NO_HTML_ESCAPING: Gson = GsonBuilder()
+
+val noHtmlEscapeSerializer: Gson = GsonBuilder()
         .disableHtmlEscaping()
         .create()
 
 /** Serializes the receiver object with the default [Gson] implementation.  */
-fun Any.serialize(): String = DEFAULT.toJson(this)
+fun Any.serialize(): String = defaultSerializer.toJson(this)
 
-fun <T> String.deserialize(clazz: Class<T>): T? = DEFAULT.fromJson(this, clazz)
+inline fun <reified T> String.deserialize(): T =
+        defaultSerializer.fromJson(this, T::class.java)
 
 /** Serializes the receiver object without escaping characters such as < > etc.  */
-fun Any.serializeNoEscaping(): String = NO_HTML_ESCAPING.toJson(this)
+fun Any.serializeNoEscaping(): String = noHtmlEscapeSerializer.toJson(this)
 
-fun <T> String.deserializeNoEscaping(clazz: Class<T>): T? = NO_HTML_ESCAPING.fromJson(this, clazz)
+inline fun <reified T> String.deserializeNoEscaping(): T =
+        noHtmlEscapeSerializer.fromJson(this, T::class.java)
 
 /** Serializes and pretty prints the given object.  */
-fun Any.prettyPrint(): String = PRETTY_PRINT.toJson(this)
+fun Any.prettyPrint(): String = prettyPrintSerializer.toJson(this)

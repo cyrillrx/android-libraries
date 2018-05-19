@@ -2,7 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
-def moduleVersion = '0.4.0'
+def moduleGroupId = 'com.cyrillrx.android'
+def moduleName = 'core'
+def moduleVersion = '0.4.1'
 
 android {
     compileSdkVersion project.compileSdkVersion
@@ -58,9 +60,9 @@ publish {
     bintrayKey = publishConf['key']
 
     userOrg = 'cyrillrx'
-    groupId = 'com.cyrillrx.android'
-    artifactId = 'core'
-    version = moduleVersion
-    description = 'A basic library for Android containing UI components, and miscellaneous utils.'
+    groupId = moduleGroupId
+    artifactId = moduleName
+    publishVersion = moduleVersion
+    desc = 'A basic library for Android containing UI components, and miscellaneous utils.'
     website = 'https://github.com/cyrillrx/android_libraries'
 }

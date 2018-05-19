@@ -2,7 +2,6 @@
 A set of Android libraries.
 
 ## Core module
-### Logger
 ### Data binder
 
 ## Publish to Bintray

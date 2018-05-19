@@ -26,13 +26,13 @@ class SerializerTest {
     fun deserialize() {
 
         val serialized = """{"key1":"toto","key2":"\u003ctag /\u003e"}"""
-        val data: DataObject = serialized.deserialize(DataObject::class.java)
+        val data: DataObject = serialized.deserialize()
 
         Assert.assertEquals("toto", data.key1)
         Assert.assertEquals("<tag />", data.key2)
 
         val serialized2 = """{"key1":"toto","key2":"<tag />"}"""
-        val data2: DataObject = serialized2.deserialize(DataObject::class.java)
+        val data2: DataObject = serialized2.deserialize()
 
         Assert.assertEquals("toto", data2.key1)
         Assert.assertEquals("<tag />", data2.key2)
@@ -54,7 +54,7 @@ class SerializerTest {
 
         val serialized = """{"key1":"toto","key2":"\u003ctag /\u003e"}"""
 
-        val data: DataObject = serialized.deserializeNoEscaping(DataObject::class.java)
+        val data: DataObject = serialized.deserializeNoEscaping()
 
         Assert.assertEquals("toto", data.key1)
         Assert.assertEquals("<tag />", data.key2)

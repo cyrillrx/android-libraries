@@ -35,7 +35,7 @@ publish {
     userOrg = 'cyrillrx'
     groupId = 'com.cyrillrx.android'
     artifactId = 'remote'
-    version = '0.0.2'
-    description = 'Remote control library in java.'
+    publishVersion = '0.0.2'
+    desc = 'Remote control library in java.'
     website = 'https://github.com/cyrillrx/android_libraries'
 }
