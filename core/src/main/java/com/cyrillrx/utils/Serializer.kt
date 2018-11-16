@@ -25,8 +25,9 @@ val noHtmlEscapeSerializer: Gson = GsonBuilder()
 /** Serializes the receiver object with the default [Gson] implementation.  */
 fun Any.serialize(): String = defaultSerializer.toJson(this)
 
-inline fun <reified T> String.deserialize(): T =
-        defaultSerializer.fromJson(this, T::class.java)
+fun <T> String.deserialize(clazz: Class<T>): T = defaultSerializer.fromJson(this, clazz)
+
+inline fun <reified T> String.deserialize(): T = deserialize(T::class.java)
 
 /** Serializes the receiver object without escaping characters such as < > etc.  */
 fun Any.serializeNoEscaping(): String = noHtmlEscapeSerializer.toJson(this)

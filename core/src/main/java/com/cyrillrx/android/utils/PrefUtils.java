@@ -15,12 +15,15 @@ import java.util.List;
  * @author Cyril Leroux
  *         Created on 19/12/2014.
  */
+@Deprecated
 public class PrefUtils {
 
+    @Deprecated
     protected static SharedPreferences getPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
     }
 
+    @Deprecated
     public static SharedPreferences.Editor edit(final Context context) {
         return getPreferences(context).edit();
     }
@@ -33,6 +36,7 @@ public class PrefUtils {
      * @return The preference value if it exists, or an empty String.
      * @throws ClassCastException if there is a preference with this name that is not a String.
      */
+    @Deprecated
     public static String getString(Context context, String key) {
         return getPreferences(context).getString(key, "");
     }
@@ -45,6 +49,7 @@ public class PrefUtils {
      * @return The preference value if it exists, or defaultValue.
      * @throws ClassCastException if there is a preference with this name that is not a String.
      */
+    @Deprecated
     public static String getString(Context context, String key, String defaultValue) {
         return getPreferences(context).getString(key, defaultValue);
     }
@@ -58,6 +63,7 @@ public class PrefUtils {
      * @param key     The name of the preference to retrieve.
      * @return The preference value if it exists, or an empty String.
      */
+    @Deprecated
     public static String getSafeString(Context context, String key) {
 
         try {
@@ -81,6 +87,7 @@ public class PrefUtils {
      * @return The preference value if it exists, or defaultValue.
      * @throws ClassCastException if there is a preference with this name that is not a boolean.
      */
+    @Deprecated
     public static boolean getBoolean(Context context, String key, boolean defaultValue) {
         return getPreferences(context).getBoolean(key, defaultValue);
     }
@@ -94,6 +101,7 @@ public class PrefUtils {
      * @param key     The name of the preference to retrieve.
      * @return The preference value if it exists, or defaultValue.
      */
+    @Deprecated
     public static boolean getSafeBoolean(Context context, String key, boolean defaultValue) {
 
         try {
@@ -117,6 +125,7 @@ public class PrefUtils {
      * @return The preference value if it exists, or Integer.MIN_VALUE.
      * @throws ClassCastException if there is a preference with this name that is not an int.
      */
+    @Deprecated
     public static int getInt(Context context, String key) {
         return getPreferences(context).getInt(key, Integer.MIN_VALUE);
     }
@@ -130,6 +139,7 @@ public class PrefUtils {
      * @param key     The name of the preference to retrieve.
      * @return The preference value if it exists, or Integer.MIN_VALUE.
      */
+    @Deprecated
     public static int getSafeInt(Context context, String key) {
 
         try {
@@ -153,6 +163,7 @@ public class PrefUtils {
      * @return The preference value if it exists, or Long.MIN_VALUE.
      * @throws ClassCastException if there is a preference with this name that is not a long.
      */
+    @Deprecated
     public static long getLong(Context context, String key) {
         return getPreferences(context).getLong(key, Long.MIN_VALUE);
     }
@@ -166,6 +177,7 @@ public class PrefUtils {
      * @param key     The name of the preference to retrieve.
      * @return The preference value if it exists, or Long.MIN_VALUE.
      */
+    @Deprecated
     public static long getSafeLong(Context context, String key) {
 
         try {
@@ -186,6 +198,7 @@ public class PrefUtils {
      *
      * @param context The context.
      */
+    @Deprecated
     public static void saveObject(Context context, String key, Object object) {
         PrefUtils.edit(context)
                 .putString(key, new Gson().toJson(object))
@@ -200,6 +213,7 @@ public class PrefUtils {
      * @param clazz   The type of the object.
      * @return The de-serializes object or null.
      */
+    @Deprecated
     public static <T> T loadObject(Context context, String key, Class<T> clazz) {
 
         final String serializedData = getString(context, key);
@@ -224,6 +238,7 @@ public class PrefUtils {
      * @param arrayClass The type of the stored array.
      * @return The list of de-serializes object or an empty list.
      */
+    @Deprecated
     @NonNull
     public static <T> List<T> loadObjectList(Context context, String key, Class<T[]> arrayClass) {
 
