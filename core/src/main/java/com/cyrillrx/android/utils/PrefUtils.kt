@@ -9,9 +9,12 @@ import com.cyrillrx.utils.serialize
 fun Context.getPreferences(): SharedPreferences? =
         PreferenceManager.getDefaultSharedPreferences(applicationContext)
 
+@Deprecated("Use Context.editPref()", replaceWith = ReplaceWith("editPref()"))
 fun Context.edit() = getPreferences()?.edit()
 
-fun Context.clearPrefKey(key: String) = edit()?.remove(key)?.apply()
+fun Context.editPref() = getPreferences()?.edit()
+
+fun Context.clearPrefKey(key: String) = editPref()?.remove(key)?.apply()
 
 /**
  * Retrieves a string value from the shared preferences.
@@ -111,7 +114,7 @@ fun Context.getPrefBoolean(key: String, defaultValue: Boolean = false): Boolean 
 
 /** Serializes and saves the given object to the shared preferences. */
 fun Context.saveObject(key: String, any: Any): Boolean {
-    edit()?.putString(key, any.serialize())?.apply() ?: return false
+    editPref()?.putString(key, any.serialize())?.apply() ?: return false
     return true
 }
 
