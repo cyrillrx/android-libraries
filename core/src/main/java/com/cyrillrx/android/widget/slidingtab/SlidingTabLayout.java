@@ -102,9 +102,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
      * Sets the colors to be used for tab dividers. These colors are treated as a circular array.
      * Providing one color will mean that all tabs are indicated with the same color.
      */
-    public void setDividerColors(int... colors) {
-        tabStrip.setDividerColors(colors);
-    }
+    public void setDividerColors(int... colors) { tabStrip.setDividerColors(colors); }
 
     /**
      * Set the {@link android.support.v4.view.ViewPager.OnPageChangeListener}. When using {@link SlidingTabLayout} you are
@@ -179,14 +177,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
             if (tabViewLayoutId != 0) {
                 // If there is a custom tab view layout id set, try and inflate it
                 tabView = LayoutInflater.from(getContext()).inflate(tabViewLayoutId, tabStrip, false);
-                tabTitleView = (TextView) tabView.findViewById(tabViewTextViewId);
+                tabTitleView = tabView.findViewById(tabViewTextViewId);
             }
 
             if (tabView == null) {
                 tabView = createDefaultTabView(getContext());
             }
 
-            if (tabTitleView == null && TextView.class.isInstance(tabView)) {
+            if (tabTitleView == null && tabView instanceof TextView) {
                 tabTitleView = (TextView) tabView;
             }
 
