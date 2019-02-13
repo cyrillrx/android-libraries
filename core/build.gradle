@@ -4,7 +4,7 @@ apply plugin: 'com.novoda.bintray-release'
 
 def moduleGroupId = 'com.cyrillrx.android'
 def moduleName = 'core'
-def moduleVersion = '0.5.0'
+def moduleVersion = '0.5.1'
 
 android {
     compileSdkVersion project.compileSdkVersion
