@@ -112,8 +112,14 @@ fun Context.getPrefBoolean(key: String, defaultValue: Boolean = false): Boolean 
     return defaultValue
 }
 
-/** Serializes and saves the given object to the shared preferences. */
-fun Context.saveObject(key: String, any: Any): Boolean {
+/**
+ * Serializes and saves the given object to the shared preferences.
+ * @return True if the object has been saved.
+ * */
+fun Context.saveObject(key: String, any: Any?): Boolean {
+    if (any == null) {
+        return false
+    }
     editPref()?.putString(key, any.serialize())?.apply() ?: return false
     return true
 }
