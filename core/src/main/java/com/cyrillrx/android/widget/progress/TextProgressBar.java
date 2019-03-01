@@ -8,11 +8,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
 import com.cyrillrx.android.R;
+
+import androidx.annotation.NonNull;
 
 /**
  * @author Cyril Leroux

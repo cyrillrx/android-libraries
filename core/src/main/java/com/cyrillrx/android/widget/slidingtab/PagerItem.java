@@ -1,6 +1,6 @@
 package com.cyrillrx.android.widget.slidingtab;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * A pager item for fragments.

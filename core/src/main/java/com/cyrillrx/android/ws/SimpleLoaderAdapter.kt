@@ -1,6 +1,6 @@
 package com.cyrillrx.android.ws
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 import com.cyrillrx.android.section.ItemType
 
@@ -8,7 +8,7 @@ import com.cyrillrx.android.section.ItemType
  * @author Cyril Leroux
  *         Created on 17/03/2015
  */
-abstract class SimpleLoaderAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
+abstract class SimpleLoaderAdapter<VH : RecyclerView.ViewHolder> : androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
     protected var isLoading: Boolean = false
 

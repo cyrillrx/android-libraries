@@ -2,10 +2,10 @@ package com.cyrillrx.android.utils
 
 import android.app.Activity
 import android.content.ContextWrapper
-import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 
 /**
  * @author Cyril Leroux

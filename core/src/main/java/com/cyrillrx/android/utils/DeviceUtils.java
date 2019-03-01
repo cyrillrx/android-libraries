@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Point;
-import android.support.annotation.Nullable;
 import android.view.Display;
 
 import com.cyrillrx.android.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author Cyril Leroux

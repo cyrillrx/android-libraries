@@ -1,10 +1,11 @@
 package com.cyrillrx.android.section;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cyrillrx.android.toolbox.OnDataClickListener;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author Cyril Leroux
@@ -28,12 +29,7 @@ public class SectionViewHolder<Data> extends RecyclerView.ViewHolder {
 
     protected void bindData(final Data data, final OnDataClickListener<Data> clickListener) {
         // Handle data click
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.onDataClick(data);
-            }
-        });
+        itemView.setOnClickListener(v -> clickListener.onDataClick(data));
     }
 
     protected void bindHeader(String header) {

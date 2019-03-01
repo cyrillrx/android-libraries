@@ -1,13 +1,13 @@
 package com.cyrillrx.android.section;
 
-import android.support.v7.widget.RecyclerView;
-
 import com.cyrillrx.android.toolbox.NamedList;
 import com.cyrillrx.android.toolbox.OnDataClickListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Parent for section adapters.
