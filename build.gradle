@@ -17,8 +17,9 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        maven { url 'http://dl.bintray.com/cyrillrx/maven' }
         google()
+        jcenter()
     }
 
     ext {

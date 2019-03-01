@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Spaces -->
+
+    <dimen name="ui_templates_spacing_common">16dp</dimen>
+
+    <!-- Text -->
+
+    <dimen name="ui_templates_text_title">22sp</dimen>
+    <dimen name="ui_templates_text_subtitle">16sp</dimen>
+
+    <!-- Header -->
+
+    <dimen name="ui_templates_spacing_header">32dp</dimen>
+    <dimen name="ui_templates_text_header">24sp</dimen>
+
+</resources>

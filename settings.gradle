@@ -1,2 +1,3 @@
 include ':core'
+include ':templates'
 include ':remote'
