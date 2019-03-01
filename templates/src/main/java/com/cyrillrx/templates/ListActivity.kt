@@ -31,7 +31,7 @@ abstract class ListActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        header?.let { adapter.add(header) }
+        header?.let { adapter.add(it) }
     }
 
     protected open fun addItemDecoration(recyclerView: RecyclerView, layoutManager: LinearLayoutManager) {}

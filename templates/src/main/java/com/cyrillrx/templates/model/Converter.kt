@@ -4,9 +4,9 @@ package com.cyrillrx.templates.model
  * @author Cyril Leroux
  *         Created on 28/02/2019.
  */
-interface ItemFactory {
+interface Converter {
 
-    fun createHeader(input: Any?): Header
+    fun toHeader(input: Any?): Header
 
-    fun createItem(input: Any?): Item
+    fun toItem(input: Any?): Item
 }
