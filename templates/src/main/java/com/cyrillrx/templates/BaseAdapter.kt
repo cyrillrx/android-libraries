@@ -6,6 +6,8 @@ import com.cyrillrx.logger.Logger
 import com.cyrillrx.templates.item.HeaderViewHolder
 import com.cyrillrx.templates.item.ItemViewHolder
 import com.cyrillrx.templates.model.Converter
+import com.cyrillrx.templates.model.Header
+import com.cyrillrx.templates.model.Item
 import java.util.*
 
 /**
@@ -40,7 +42,9 @@ open class BaseAdapter(private val converter: Converter)
 
     protected open fun getItemViewType(item: Any): Int =
             when (item) {
+                is Header -> TYPE_HEADER
                 is String -> TYPE_HEADER
+                is Item -> TYPE_ITEM
                 else -> TYPE_ITEM
             }
 
