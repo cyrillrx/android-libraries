@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class ListActivity : AppCompatActivity() {
 
-    protected abstract val header: String?
     protected abstract val adapter: BaseAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +29,6 @@ abstract class ListActivity : AppCompatActivity() {
         addItemDecoration(recyclerView, layoutManager)
 
         recyclerView.adapter = adapter
-
-        header?.let { adapter.add(it) }
     }
 
     protected open fun addItemDecoration(recyclerView: RecyclerView, layoutManager: LinearLayoutManager) {}
