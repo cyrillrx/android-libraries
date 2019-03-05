@@ -23,8 +23,20 @@ class ItemViewHolder(parent: ViewGroup)
     }
 
     private fun bind(title: String?, subtitle: String?, click: ((View) -> Unit)?) {
-        tvTitle.text = title
-        tvSubtitle.text = subtitle
+
+        if (title.isNullOrBlank()) {
+            tvTitle.visibility = View.GONE
+        } else {
+            tvTitle.text = title
+            tvTitle.visibility = View.VISIBLE
+        }
+
+        if (subtitle.isNullOrBlank()) {
+            tvSubtitle.visibility = View.GONE
+        } else {
+            tvSubtitle.text = title
+            tvSubtitle.visibility = View.VISIBLE
+        }
 
         itemView.setOnClickListener(click)
     }
