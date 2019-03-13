@@ -4,7 +4,10 @@
 
     <!-- Spaces -->
 
+    <dimen name="ui_templates_spacing_small">4dp</dimen>
+    <dimen name="ui_templates_spacing_medium">8dp</dimen>
     <dimen name="ui_templates_spacing_common">16dp</dimen>
+    <dimen name="ui_templates_spacing_large">32dp</dimen>
 
     <!-- Text -->
 
@@ -15,5 +18,9 @@
 
     <dimen name="ui_templates_spacing_header">32dp</dimen>
     <dimen name="ui_templates_text_header">24sp</dimen>
+
+    <!-- Other -->
+
+    <dimen name="ui_templates_loader_height">60dp</dimen>
 
 </resources>
