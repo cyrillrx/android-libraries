@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_list.*
 
 /**
  * @author Cyril Leroux
@@ -30,16 +29,6 @@ abstract class ListActivity : AppCompatActivity() {
         addItemDecoration(recyclerView, layoutManager)
 
         recyclerView.adapter = adapter
-    }
-
-    override fun setTitle(title: CharSequence?) {
-        super.setTitle(title)
-        toolbar.title = title
-    }
-
-    override fun setTitle(titleId: Int) {
-        super.setTitle(titleId)
-        toolbar.setTitle(titleId)
     }
 
     protected open fun addItemDecoration(recyclerView: RecyclerView, layoutManager: LinearLayoutManager) {}
