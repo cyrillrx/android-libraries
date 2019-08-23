@@ -34,7 +34,7 @@ class ItemViewHolder(parent: ViewGroup)
         if (subtitle.isNullOrBlank()) {
             tvSubtitle.visibility = View.GONE
         } else {
-            tvSubtitle.text = title
+            tvSubtitle.text = subtitle
             tvSubtitle.visibility = View.VISIBLE
         }
 
