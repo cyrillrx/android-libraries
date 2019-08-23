@@ -21,8 +21,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -31,7 +31,14 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.4.0'
 }
 
+File confFile = rootProject.file('../bintray/cyrillrx.properties')
+Properties publishConf = new Properties()
+publishConf.load(new FileInputStream(confFile))
+
 publish {
+    bintrayUser = publishConf['user']
+    bintrayKey = publishConf['key']
+
     userOrg = 'cyrillrx'
     groupId = 'com.cyrillrx.android'
     artifactId = 'remote'
