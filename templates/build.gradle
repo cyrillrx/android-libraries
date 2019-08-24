@@ -6,7 +6,7 @@ apply plugin: 'com.novoda.bintray-release'
 def moduleUser = 'cyrillrx'
 def moduleGroupId = 'com.cyrillrx.android'
 def moduleName = 'ui-templates'
-def moduleVersion = '0.3.4'
+def moduleVersion = '0.3.5'
 
 android {
     compileSdkVersion project.compileSdkVersion

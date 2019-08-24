@@ -63,6 +63,7 @@ open class BaseAdapter(private val converter: Converter)
 
     fun clear() {
         items.clear()
+        notifyDataSetChanged()
     }
 
     companion object {
