@@ -61,6 +61,10 @@ open class BaseAdapter(private val converter: Converter)
         notifyItemRangeInserted(startPos, newItems.size)
     }
 
+    fun clear() {
+        items.clear()
+    }
+
     companion object {
         private const val TYPE_ITEM = 0
         private const val TYPE_HEADER = 1
