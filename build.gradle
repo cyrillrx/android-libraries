@@ -9,23 +9,34 @@ buildscript {
     }
 
     dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath 'com.novoda:bintray-release:0.9.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'http://dl.bintray.com/cyrillrx/maven' }
         google()
         jcenter()
+        maven { url 'http://dl.bintray.com/cyrillrx/maven' }
     }
+
+    File confFile = rootProject.file('../bintray/cyrillrx.properties')
+    Properties publishConf = new Properties()
+    publishConf.load(new FileInputStream(confFile))
 
     ext {
         minSdkVersion = 16
         compileSdkVersion = 29
         targetSdkVersion = 29
+
+        bintrayUser = publishConf['user']
+        bintrayKey = publishConf['key']
+
+        moduleUser = 'cyrillrx'
+        moduleGroupId = 'com.cyrillrx.android'
+        moduleWebsite = 'https://github.com/cyrillrx/android_libraries'
 
         buildToolsVersion = '29.0.0'
     }

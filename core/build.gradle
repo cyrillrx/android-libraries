@@ -2,10 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
-def moduleUser = 'cyrillrx'
-def moduleGroupId = 'com.cyrillrx.android'
 def moduleName = 'core'
 def moduleVersion = '0.5.1'
+def moduleDesc = 'A basic library for Android containing UI components, and miscellaneous utils.'
 
 android {
     compileSdkVersion project.compileSdkVersion
@@ -15,15 +14,6 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionName moduleVersion
-    }
-
-    buildTypes {
-        release {
-            debuggable false
-            jniDebuggable false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
 
     compileOptions {
@@ -50,18 +40,16 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
-File confFile = rootProject.file('../bintray/cyrillrx.properties')
-Properties publishConf = new Properties()
-publishConf.load(new FileInputStream(confFile))
-
 publish {
-    bintrayUser = publishConf['user']
-    bintrayKey = publishConf['key']
+    // Bintray credentials
+    bintrayUser = project.ext.bintrayKey
+    bintrayKey = project.ext.bintrayKey
 
-    userOrg = moduleUser
-    groupId = moduleGroupId
+    // Repository config
+    userOrg = project.ext.moduleUser
+    groupId = project.ext.moduleGroupId
+    website = project.ext.moduleWebsite
     artifactId = moduleName
     publishVersion = moduleVersion
-    desc = 'A basic library for Android containing UI components, and miscellaneous utils.'
-    website = 'https://github.com/cyrillrx/android_libraries'
+    desc = moduleDesc
 }

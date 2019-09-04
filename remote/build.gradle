@@ -2,6 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'bintray-release'
 
+def moduleName = 'remote'
+def moduleVersion = '0.0.2'
+def moduleDesc = 'Remote control library in java.'
+
 android {
     compileSdkVersion project.compileSdkVersion
     buildToolsVersion project.buildToolsVersion
@@ -9,15 +13,7 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode 1
-        versionName "0.0.2"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        versionName moduleVersion
     }
 
     compileOptions {
@@ -31,18 +27,16 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.4.0'
 }
 
-File confFile = rootProject.file('../bintray/cyrillrx.properties')
-Properties publishConf = new Properties()
-publishConf.load(new FileInputStream(confFile))
-
 publish {
-    bintrayUser = publishConf['user']
-    bintrayKey = publishConf['key']
+    // Bintray credentials
+    bintrayUser = project.ext.bintrayKey
+    bintrayKey = project.ext.bintrayKey
 
-    userOrg = 'cyrillrx'
-    groupId = 'com.cyrillrx.android'
-    artifactId = 'remote'
-    publishVersion = '0.0.2'
-    desc = 'Remote control library in java.'
-    website = 'https://github.com/cyrillrx/android_libraries'
+    // Repository config
+    userOrg = project.ext.moduleUser
+    groupId = project.ext.moduleGroupId
+    website = project.ext.moduleWebsite
+    artifactId = moduleName
+    publishVersion = moduleVersion
+    desc = moduleDesc
 }
