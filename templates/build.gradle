@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.novoda.bintray-release'
 
 def moduleName = 'ui-templates'
-def moduleVersion = '0.3.5'
+def moduleVersion = '0.3.6'
 def moduleDesc = 'A basic library for Android containing UI components, and miscellaneous utils.'
 
 android {
