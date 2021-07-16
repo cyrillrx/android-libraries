@@ -6,7 +6,7 @@ plugins {
 val moduleName = "ui-templates"
 val moduleVersion = "0.3.6"
 val moduleDesc = "A basic library for Android containing UI components, and miscellaneous utils."
-version = moduleVersion
+project.version = moduleVersion
 
 android {
     compileSdkVersion(Version.compileSdk)
@@ -23,8 +23,8 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7")
 
-    api(project(":core"))
-    api(files("libs/logger-1.6.1.jar"))
+    implementation(project(":core"))
+    compileOnly(files("../libs/logger-1.6.1.aar"))
 
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")

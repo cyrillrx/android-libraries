@@ -6,7 +6,7 @@ plugins {
 val moduleName = "core"
 val moduleVersion = "0.5.1"
 val moduleDesc = "A basic library for Android containing UI components, and miscellaneous utils."
-version = moduleVersion
+project.version = moduleVersion
 
 android {
     compileSdkVersion(Version.compileSdk)
