@@ -6,8 +6,7 @@ import androidx.preference.PreferenceManager
 import com.cyrillrx.utils.deserialize
 import com.cyrillrx.utils.serialize
 
-fun Context.getPreferences(): SharedPreferences? =
-        PreferenceManager.getDefaultSharedPreferences(applicationContext)
+fun Context.getPreferences(): SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(applicationContext)
 
 @Deprecated("Use Context.editPref()", replaceWith = ReplaceWith("editPref()"))
 fun Context.edit() = getPreferences()?.edit()
