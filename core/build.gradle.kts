@@ -24,7 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.preference:preference-ktx:1.1.1")
