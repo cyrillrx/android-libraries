@@ -2,7 +2,6 @@ package com.cyrillrx.templates
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.cyrillrx.logger.Logger
 import com.cyrillrx.templates.item.HeaderViewHolder
 import com.cyrillrx.templates.item.ItemViewHolder
 import com.cyrillrx.templates.model.Converter
@@ -34,7 +33,7 @@ open class BaseAdapter(private val converter: Converter)
         when (holder) {
             is HeaderViewHolder -> holder.bind(converter.toHeader(items[position]))
             is ItemViewHolder -> holder.bind(converter.toItem(items[position]))
-            else -> Logger.error(TAG, "onBindViewHolder - holder '$holder' not supported")
+            else -> throw Exception("onBindViewHolder - holder '$holder' not supported")
         }
     }
 

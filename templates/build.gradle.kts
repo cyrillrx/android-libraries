@@ -24,7 +24,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7")
 
     implementation(project(":core"))
-    compileOnly(files("../libs/logger-1.6.1.aar"))
 
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
